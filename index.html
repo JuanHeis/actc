@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="result"></div>
+
+    <script>
+      function fetchData() {
+        const url =
+          "https://corsproxy.io/?" +
+          encodeURIComponent(
+            '"https://www.actc.org.ar/v3/carrera-on-line-resultados.ajax.php?intIDCarrera=1497&intIDTanda=8"'
+          );
+        fetch(url)
+          .then((response) => response.text())
+          .then((data) => {
+            console.log("Update");
+            document.getElementById("result").innerHTML = data;
+          })
+          .catch((error) => console.error("Error:", error));
+      }
+
+      setInterval(fetchData, 1000); // Llama a fetchData cada 1000ms (1 segundo)
+    </script>
+  </body>
+</html>
